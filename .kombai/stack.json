@@ -1,0 +1,11 @@
+// Kombai Tech Stack Configuration
+// Each value must be a string or an array of strings.
+// Example: "Framework": "Vite" or "Project Type": ["React", "Vue"]
+{
+  "Project Type": "Vanilla JS",
+  "TS/JS": "JS",
+  "API Client": "Fetch API",
+  "HTTP Server Framework": "Express",
+  "Authentication": "jsonwebtoken",
+  "Package Manager": "npm"
+}

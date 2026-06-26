@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>F&S Fragrances | فخامة العطور</title>
+    <meta name="description" content="اكتشف أرقى أنواع العطور العالمية الأصلية. تجربة تسوق فريدة تجمع بين الفخامة والجودة.">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="overlay" id="main-overlay"></div>
+
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="container flex-between">
+            <div class="top-contacts">
+                <a href="https://wa.me/201276713027" target="_blank"><i class="fa-brands fa-whatsapp"></i> واتساب</a>
+            </div>
+            <div class="top-promo">
+                <span data-i18n="topPromo">تخفيضات موسمية حصرية | شحن مجاني للطلبات فوق 100$</span>
+            </div>
+            <div class="top-links flex">
+                <div class="lang-switch" id="lang-toggle" style="cursor: pointer; color: white; border: 1px solid white; padding: 2px 10px; font-size: 0.7rem;">
+                    <span id="lang-text">EN</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="main-header" id="header">
+        <div class="container flex-between">
+
+            <!-- LEFT side in RTL: action icons -->
+            <div class="header-actions flex">
+                <div class="action-item" id="theme-toggle" title="Toggle Theme"><i class="fa-solid fa-moon"></i></div>
+                <div class="action-item" id="search-trigger" title="Search"><i class="fa-solid fa-magnifying-glass"></i></div>
+                <div class="action-item cart-btn" id="cart-drawer-btn" title="Cart">
+                    <i class="fa-solid fa-bag-shopping"></i>
+                    <span class="count">0</span>
+                </div>
+            </div>
+
+            <!-- CENTER: Logo -->
+            <div class="logo">
+                <a href="#"><h1 dir="ltr">F&S <span>Fragrances</span></h1></a>
+            </div>
+
+            <!-- RIGHT side in RTL: navigation -->
+            <nav class="main-nav">
+                <ul class="flex">
+                    <li><a href="#" class="active" data-i18n="navHome">الرئيسية</a></li>
+                    <li><a href="#new-arrivals" data-i18n="navPerfumes">العطور</a></li>
+                    <li><a href="#" data-i18n="navOud">العود</a></li>
+                    <li><a href="#" data-i18n="navWatches">ساعات</a></li>
+                    <li><a href="#" data-i18n="navOffers">العروض</a></li>
+                </ul>
+            </nav>
+
+            <!-- Mobile toggle (hidden on desktop) -->
+            <div class="nav-toggle" id="mobile-menu-btn">
+                <i class="fa-solid fa-bars"></i>
+            </div>
+
+        </div>
+    </header>
+
+    <!-- Search Modal -->
+    <div class="search-modal" id="search-modal">
+        <div class="search-content">
+            <input type="text" placeholder="ما الذي تبحث عنه؟" id="search-input">
+            <div class="close-search" id="close-search"><i class="fa-solid fa-xmark"></i></div>
+        </div>
+        <div class="search-results" id="search-results">
+            <p class="search-help">ابحث عن المنتج الذي تريده بالاسم أو الماركة.</p>
+        </div>
+    </div>
+
+    <!-- Product Detail Modal -->
+    <div class="product-detail-modal" id="product-detail-modal">
+        <div class="detail-card">
+            <button class="close-detail" id="close-detail"><i class="fa-solid fa-xmark"></i></button>
+            <div class="detail-grid">
+                <div class="detail-image">
+                    <img src="" alt="" id="detail-image">
+                </div>
+                <div class="detail-info">
+                    <span class="vendor" id="detail-vendor"></span>
+                    <h3 id="detail-title"></h3>
+                    <p class="detail-price" id="detail-price"></p>
+                    <p class="detail-desc" id="detail-desc"></p>
+                    <div class="detail-notes">
+                        <div><strong>Top Notes:</strong> <span id="detail-notes-top"></span></div>
+                        <div><strong>Heart Notes:</strong> <span id="detail-notes-mid"></span></div>
+                        <div><strong>Base Notes:</strong> <span id="detail-notes-base"></span></div>
+                    </div>
+                    <button class="btn btn-gold" id="detail-add-to-cart">أضف للسلة</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Favorites Modal -->
+    <div class="favorites-modal" id="favorites-modal">
+        <div class="favorites-card">
+            <button class="close-detail" id="close-favorites"><i class="fa-solid fa-xmark"></i></button>
+            <div class="favorites-content">
+                <h3>المفضلات</h3>
+                <div class="favorites-list" id="favorites-list">
+                    <div class="favorites-empty-text">لم تضف بعد أي منتج للمفضلات.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile Nav Menu -->
+    <div class="mobile-nav-panel" id="mobile-nav-panel">
+        <div class="mobile-nav-header">
+            <h3>القائمة</h3>
+            <div class="close-mobile-nav" id="close-mobile-nav"><i class="fa-solid fa-xmark"></i></div>
+        </div>
+        <ul class="mobile-nav-links">
+            <li><a href="#" data-i18n="navHome">الرئيسية</a></li>
+            <li><a href="#new-arrivals" data-i18n="navPerfumes">العطور</a></li>
+            <li><a href="#" data-i18n="navOud">العود</a></li>
+            <li><a href="#" data-i18n="navWatches">ساعات</a></li>
+            <li><a href="#" data-i18n="navOffers">العروض</a></li>
+        </ul>
+    </div>
+
+    <!-- Cart Drawer -->
+    <div class="cart-drawer" id="cart-drawer">
+        <div class="cart-header">
+            <h3 data-i18n="cartTitle">سلة التسوق</h3>
+            <div class="close-cart" id="close-cart"><i class="fa-solid fa-xmark"></i></div>
+        </div>
+        <div class="cart-items" id="cart-items-container">
+            <div class="empty-cart-msg" style="text-align: center; margin-top: 50px; color: var(--text-muted);" data-i18n="emptyCart">سلة التسوق فارغة حالياً</div>
+        </div>
+        <div class="cart-footer">
+            <div class="total-row">
+                <span data-i18n="total">الإجمالي:</span>
+                <span id="cart-total-price">0.00 ر.س</span>
+            </div>
+            <button id="checkout-btn" class="checkout-btn" data-i18n="checkout">إتمام الطلب</button>
+        </div>
+    </div>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1541643600914-78b084683601?auto=format&fit=crop&q=80&w=2600');">
+                <div class="container hero-content">
+                    <h2 data-i18n="heroTitle">فخامة تستحقها <br> في كل رشة</h2>
+                    <p data-i18n="heroDesc">اكتشف أرقى أنواع العطور والعود في الشرق الأوسط، جودة أصلية وتغليف يليق بك.</p>
+                    <div class="hero-btns flex">
+                        <a href="#new-arrivals" class="btn btn-gold" data-i18n="shopNow">تسوق الآن</a>
+                        <a href="#offer-section" class="btn btn-outline" style="margin-right: 20px; border: 1px solid white; color: white;" data-i18n="discoverMore">اكتشف العروض</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Products -->
+        <section class="products-section py" id="new-arrivals">
+            <div class="container">
+                <h2 data-i18n="newArrivals">وصل حديثاً</h2>
+                <div class="products-grid grid-4" id="products-container">
+                    <!-- Dynamic Products -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Special Offer -->
+        <section id="offer-section" class="offer-section">
+            <div class="container">
+                <div class="offer-card">
+                    <div class="offer-head">
+                        <h2>عرض محدود 🔥🔥</h2>
+                        <p>جميع القطع أوت ليت أعلى كواليتي، ثبات عالي، وفوجان ممتاز.</p>
+                    </div>
+                    <div class="offer-prices">
+                        <div class="offer-price">
+                            <span>1 قطعة</span>
+                            <strong>500 جنيه</strong>
+                        </div>
+                        <div class="offer-price">
+                            <span>2 قطعة</span>
+                            <strong>950 جنيه</strong>
+                        </div>
+                        <div class="offer-price">
+                            <span>3 قطع</span>
+                            <strong>1350 جنيه</strong>
+                        </div>
+                    </div>
+                    <a href="#new-arrivals" class="btn btn-gold">تسوق الآن</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Promotion -->
+        <section class="trust-badges py" id="trust-container">
+            <div class="container flex-between" id="trust-container">
+                <div class="badge-item">
+                    <i class="fa-solid fa-truck-fast"></i>
+                    <h4 data-i18n="trustShip">توصيل سريع</h4>
+                    <p data-i18n="trustShipDesc">في جميع أنحاء المملكة</p>
+                </div>
+                <div class="badge-item">
+                    <i class="fa-solid fa-shield-halved"></i>
+                    <h4 data-i18n="trustQual">جودة مضمونة</h4>
+                    <p data-i18n="trustQualDesc">منتجات أصلية 100%</p>
+                </div>
+                <div class="badge-item">
+                    <i class="fa-solid fa-headset"></i>
+                    <h4 data-i18n="trustSupp">خدمة عملاء</h4>
+                    <p data-i18n="trustSuppDesc">دعم متواصل على مدار الساعة</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container grid-4">
+            <div class="footer-col">
+                <div class="logo"><h1>F&S <span>Fragrances</span></h1></div>
+                <p data-i18n="footerAbout">وجهتك الأولى للأناقة والفخامة العطرية.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fa-brands fa-whatsapp"></i></a>
+                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4 data-i18n="footerLinks">روابط سريعة</h4>
+                <ul>
+                    <li><a href="#" data-i18n="linkAbout">من نحن</a></li>
+                    <li><a href="#" data-i18n="navContact">تواصل معنا</a></li>
+                    <li><a href="admin/login.html">صفحة الإدارة</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>تواصل معنا</h4>
+                <div class="footer-contact">
+                    <a href="https://wa.me/201276713027" target="_blank"><i class="fa-brands fa-whatsapp"></i> واتساب</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container flex-between">
+                <p data-i18n="footerCopy">&copy; 2026 F&S Fragrances. جميع الحقوق محفوظة.</p>
+                <div class="payment-methods">
+                    <i class="fa-brands fa-cc-visa"></i>
+                    <i class="fa-brands fa-cc-mastercard"></i>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating Elements -->
+    <a href="https://wa.me/201276713027" class="whatsapp-float" target="_blank" title="واتساب">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <nav class="app-bottom-nav">
+        <a href="#new-arrivals" class="nav-item">
+            <i class="fa-solid fa-shop"></i>
+            <span>تسوق</span>
+        </a>
+        <a href="javascript:void(0)" id="bottom-wishlist-btn" class="nav-item">
+            <i class="fa-regular fa-heart"></i>
+            <span>مفضلة</span>
+        </a>
+        <a href="javascript:void(0)" id="bottom-cart-btn" class="nav-item">
+            <i class="fa-solid fa-bag-shopping"></i>
+            <span>السلة</span>
+        </a>
+        <a href="https://wa.me/201276713027" class="nav-item" target="_blank">
+            <i class="fa-brands fa-whatsapp"></i>
+            <span>واتساب</span>
+        </a>
+    </nav>
+
+    <!-- Real-Time & API -->
+    <script src="https://cdn.socket.io/4.7.5/socket.io.min.js"></script>
+    <script src="js/api-config.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/socket-client.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
