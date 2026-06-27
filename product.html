@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تفاصيل المنتج</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="overlay" id="main-overlay"></div>
+
+    <div class="top-bar">
+        <div class="container flex-between">
+            <div class="top-contacts">
+                <a href="https://wa.me/201276713027" target="_blank"><i class="fa-brands fa-whatsapp"></i> واتساب</a>
+            </div>
+            <div class="top-promo">
+                <span data-i18n="topPromo">شحن مجاني للطلبات فوق 500 جنيه | منتجات أصلية 100%</span>
+            </div>
+            <div class="top-links flex">
+                <div class="lang-switch" id="lang-toggle" style="cursor: pointer; color: white; border: 1px solid white; padding: 2px 10px; font-size: 0.7rem;">
+                    <span id="lang-text">EN</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <header class="product-page-header">
+        <div class="container flex-between" style="align-items: center; padding: 20px 0;">
+            <a href="index.html" class="back-link"><i class="fa-solid fa-arrow-right"></i> عودة</a>
+            <div class="logo"><a href="index.html"><h1 dir="ltr">F&S <span>Fragrances</span></h1></a></div>
+            <div></div>
+        </div>
+    </header>
+
+    <main class="container product-page-content">
+        <section class="product-detail-page">
+            <div class="product-detail-box">
+                <div class="product-detail-image">
+                    <img id="product-image" src="" alt="">
+                </div>
+                <div class="product-detail-info">
+                    <span class="vendor" id="product-vendor"></span>
+                    <h1 id="product-title"></h1>
+                    <p class="product-price" id="product-price"></p>
+                    <p id="product-stock" class="stock-label"></p>
+                    <p class="product-full-desc" id="product-desc"></p>
+                    <div class="product-notes-full">
+                        <div><strong>Top Notes:</strong> <span id="product-notes-top"></span></div>
+                        <div><strong>Heart Notes:</strong> <span id="product-notes-mid"></span></div>
+                        <div><strong>Base Notes:</strong> <span id="product-notes-base"></span></div>
+                    </div>
+                    <button id="page-add-to-cart" class="btn btn-gold">أضف للسلة</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="https://cdn.socket.io/4.7.5/socket.io.min.js"></script>
+    <script src="api-config.js"></script>
+    <script src="api.js"></script>
+    <script src="socket-client.js"></script>
+    <script src="script.js"></script>
+    <script src="product.js"></script>
+</body>
+</html>
