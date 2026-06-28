@@ -37,3 +37,9 @@ backend/data/*.db-shm
 backend/data/*.db-wal
 backend/logs/
 
+# SQLite Database files in Root
+store.db
+store.db-shm
+store.db-wal
+
+
